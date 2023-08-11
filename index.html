@@ -20,17 +20,17 @@
         <!-- <button onclick="performSearch()">Search</button> -->
     </nav>
     <main>
-    <div class="profile-container">
-            <input type="checkbox" class="checkbox">
+        <div class="profile-container">
         <div class="profile-info">
-            <div class="img">ProfileImg</div>
-            <div class="name">Name</div>
-            <div class="email">Email</div>
-            <div class="phone">PhoneNumber</div>
-            <div class="category">Position</div>
+            <!-- <input type="checkbox" id="inputCheckbox"> -->
+            <input type="file" id="inputImg" accept="image/*">
+            <input type="text" id="inputName" placeholder="이름">
+            <input type="email" id="inputEmail" placeholder="이메일">
+            <input type="text" id="inputPhone" placeholder="휴대번호">
+            <input type="text" id="inputCategory" placeholder="직위">
+        </div>
         </div>
         <div class ="staff-list" id = "list"></div>
-    </div>
     
     </main>
     <script src="/main.js"></script>
