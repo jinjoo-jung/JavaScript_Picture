@@ -151,7 +151,20 @@ btn1.addEventListener("click", async () => {
 
     employeeList.push(newEmployee);
 
+    // 로딩 함수
+    function showLoading() {
+      const loadingDiv = document.getElementById("loading");
+      loadingDiv.style.display = "flex"; // 로딩 GIF를 보이게 설정
+    }
+
+    function hideLoading() {
+      const loadingDiv = document.getElementById("loading");
+      loadingDiv.style.display = "none"; // 로딩 GIF를 숨기게 설정
+    }
+
     profileImageElement.addEventListener("click", () => {
+      showLoading();
+
       // 클릭한 직원의 정보를 가져와서 상세 페이지에 전달
       const selectedEmployee = {
         profileImage: profileImageElement.src,
@@ -163,7 +176,21 @@ btn1.addEventListener("click", async () => {
 
       // 선택한 직원의 정보를 쿼리 파라미터로 인코딩하여 URL에 전달
       const queryParams = new URLSearchParams(selectedEmployee);
-      window.location.href = `detail.html?${queryParams.toString()}`;
+
+      // 페이지를 떠날 때 로딩 이미지를 숨기는 처리
+      window.addEventListener("beforeunload", function () {
+        hideLoading();
+      });
+
+      // 페이지 로딩이 완료되면 로딩 GIF를 숨기는 처리를 위해 이벤트 리스너 등록
+      window.addEventListener("load", function () {
+        hideLoading();
+      });
+
+      // 일정 시간(예: 1초) 후에 페이지로 넘어가도록 설정
+      setTimeout(function () {
+        window.location.href = `detail.html?${queryParams.toString()}`;
+      }, 1000); // 1초 지연
     });
 
     try {
@@ -283,17 +310,33 @@ const deleteImageFromS3 = async (imageName) => {
   }
 };
 
-searchInput.addEventListener("input", () => {
-  const searchText = searchInput.value.trim().toLowerCase(); // 검색어 앞뒤 공백 제거 및 소문자로 변환
+// 검색 기능
+searchInput.addEventListener("input", function () {
+  var searchValue = this.value.toLowerCase(); // 검색어를 소문자로 변환합니다.
 
-  employeeList.forEach((employee) => {
-    alert(employeeList);
-    const nameElement = employee.querySelector(".p-name");
-    const name = nameElement.textContent.toLowerCase(); // 이름 소문자로 변환
-    if (name.includes(searchText)) {
+  // staff-list div 내의 모든 employee div를 선택합니다.
+  var employees = document.querySelectorAll("#list .employee");
+
+  // 각 employee div를 반복하여 검색어와 일치하는지 확인하고, 보이거나 숨깁니다.
+  employees.forEach(function (employee) {
+    var nameElement = employee.querySelector(".p-name"); // 이름 요소 선택
+    var name;
+
+    // p-name 클래스 요소 중에서 input 요소가 아닌 div 요소를 찾아 이름을 추출합니다.
+    var nameDiv = nameElement.querySelector("div.p-name");
+    if (nameDiv) {
+      name = nameDiv.textContent.toLowerCase();
+      console.log(name);
+      // 이름 텍스트를 소문자로 변환
+    } else {
+      name = nameElement.value.toLowerCase(); // input 요소의 값도 소문자로 변환
+    }
+
+    // 검색어와 이름이 일치하는 경우 해당 employee div를 보이게 합니다.
+    if (name.includes(searchValue)) {
       employee.style.display = "block";
     } else {
-      employee.style.display = "none";
+      employee.style.display = "none"; // 일치하지 않는 경우 숨깁니다.
     }
   });
 });
