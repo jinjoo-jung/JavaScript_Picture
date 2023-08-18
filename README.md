@@ -1,21 +1,7 @@
-# :camera: 직원 사진 관리 서비스
+# 빠리지앵 직원 관리 페이지
 
-직원들의 사진을 관리할 수 있는 사진 관리자 서비스를 만들어 보세요.
-
-과제 수행 및 리뷰 기간은 별도 공지를 참고하세요!
-
-## [과제 수행 및 제출 방법]
-
-1. 현재 저장소를 로컬에 클론(Clone)합니다.
-2. 자신의 본명으로 브랜치를 생성합니다.(구분 가능하도록 본명을 꼭 파스칼케이스로 표시하세요, git branch KDT0\_이름)
-3. 자신의 본명 브랜치에서 과제를 수행합니다.
-4. 과제 수행이 완료되면, 자신의 본명 브랜치를 원격 저장소에 푸시(Push)합니다.(main 브랜치에 푸시하지 않도록 꼭 주의하세요, git push origin KDT0\_이름)
-5. 저장소에서 main 브랜치를 대상으로 Pull Request 생성하면, 과제 제출이 완료됩니다!(E.g, main <== KDT0\_이름)
-6. Pull Request 링크를 LMS로도 제출해 주셔야 합니다.
-7. main 혹은 다른 사람의 브랜치로 절대 병합하지 않도록 주의하세요!
-8. Pull Request에서 보이는 설명을 다른 사람들이 이해하기 쉽도록 꼼꼼하게 작성하세요!
-9. Pull Request에서 과제 제출 후 절대 병합(Merge)하지 않도록 주의하세요!
-10. 과제 수행 및 제출 과정에서 문제가 발생한 경우, 바로 담당 멘토나 강사에서 얘기하세요!
+- 배포링크 : http://js-employee-bucket.s3-website.ap-northeast-2.amazonaws.com/favicon.ico
+- 프로젝트 기간 : 230808~230818
 
 ## [필수 요구사항]
 
@@ -25,13 +11,8 @@
 - [x] 전체 페이지 데스크탑-모바일 반응형 페이지를 개발하세요.
 - [x] 사진을 등록, 수정, 삭제가 가능해야 합니다.
 - [x] 유저 플로우를 제작하여 리드미에 추가하세요.
-
-- CSS
-
-  - [x] 애니메이션 구현
-  - [x] 상대수치 사용(rem, em)
-
-- JavaScript
+- [x] CSS 애니메이션 구현
+- [x] 상대수치 사용(rem, em)
 - [x] DOM event 조작
 
 ## [선택 요구사항]
@@ -44,12 +25,52 @@
 - [ ] 사진을 편집할 수 있는 기능을 추가해 보세요.
 - [ ] LocalStorage 사용
 
-## [화면 예시]
+## 구현 이미지
 
-![Untitled (1)](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/38754963/5dda6755-2501-4af4-bc3e-b63a353c44c2)
+### 작성해야 하는 요소들을 모두 작성해야 직원 등록이 가능
 
-![Untitled (2)](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/38754963/6c1805f1-2b00-453e-a729-2b483612726d)
+<img width="1175" alt="스크린샷 2023-08-18 오후 10 07 00" src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/85981963/0f15a98f-214b-4b9d-9b76-ab0e3aa32716">
 
-## [흐름]
+### 직원 상세 페이지
 
-![Untitled](https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/38754963/e2934c05-26f6-4ef6-88d4-beed76aa007a)
+<img width="434" alt="스크린샷 2023-08-18 오후 7 27 17" src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/85981963/4f03194b-2273-4280-a58d-1564750fb441">
+
+### 애니메이션 사용
+
+- 로고 움직임
+- 상세 페이지 넘어갈 때 1초간 로딩 애니메이션 작동
+- 상세페이지에 직원 이미지 움직이는 애니메이션 작동
+
+https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/85981963/fc859cf5-57c2-4057-8a3c-98b9254be648
+
+### 검색기능 구현
+
+https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/85981963/69fbd961-074a-4055-9412-84e11cc33794
+
+### 직원 정보 수정 , 삭제 (AWS S3에도 수정 삭제됨)
+
+https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/85981963/8ddca87d-cf8a-41c8-aa5b-66c2362def96
+
+### 반응형
+
+<img width="409" alt="스크린샷 2023-08-18 오후 10 39 38" src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/85981963/8e8b2670-33bb-4772-9a2b-acf40eddaeea">
+
+## USER FLOW
+
+<img width="845" alt="스크린샷 2023-08-18 오전 1 01 02" src="https://github.com/KDT1-FE/Y_FE_JAVASCRIPT_PICTURE/assets/85981963/2ac5492c-a455-46de-be97-5db917adf41a">
+
+#### 아쉬웠던 점
+
+- async, await의 이해가 완벽했다면 코드를 짤 때 수월했을 것 같다
+- 배포가 404에러로 잘 작동하지 않아 시간을 많이 소모하였고 결국 호스팅으로 배포했다
+- LocalStorage를 이용하기 위해서 데이터를 넣고 저장하는 것까지 하였으나, 함수를 사용하는데에 있어서 코드에 계속 에러가 생겨서 저장해놓은 데이터를 화면에 띄우는 것 까지는 못 한점이 가장 아쉽다.
+- 반응형 구현에 부족하여 더 세밀하게 구현하지 못한 점
+
+#### 배운 점
+
+- name이라는 변수명은 프로그래밍 언어나 프레임워크에서 특별한 의미를 가지는 키워드일 수 있기 때문에 변수명으로 사용하면 의도하지 않은 동작이 발생할 수도 있다는 점을 알게 되었다.
+- 하나의 함수 안에 여러 기능을 넣는 것보다 함수를 여러 개 만들어 필요할 때 호출하는 것이 좋고 코드의 가독성도 좋아진다는 것을 알게 되었다.
+
+### Develop
+
+![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) ![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=Javascript&logoColor=white)![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-007ACC?style=for-the-badge&logo=Visual%20Studio%20Code&logoColor=white)![Github](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white)
