@@ -17,7 +17,6 @@ const calender = document.getElementById("calender");
 const employeeList = [];
 
 btn1.addEventListener("click", async () => {
-  //const checkbox = checkBoxInput.checked;
   const profileImage = profileImageInput.files[0];
   const name_ = nameInput.value;
   const email = emailInput.value;
