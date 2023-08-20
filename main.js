@@ -17,7 +17,6 @@ const calender = document.getElementById("calender");
 const employeeList = [];
 
 btn1.addEventListener("click", async () => {
-  //const checkbox = checkBoxInput.checked;
   const profileImage = profileImageInput.files[0];
   const name_ = nameInput.value;
   const email = emailInput.value;
@@ -128,8 +127,6 @@ btn1.addEventListener("click", async () => {
         console.log("Successfully uploaded updated photo:", result);
         // 이미지 업로드 성공한 경우, 수정된 이미지의 URL을 활용하여 다른 작업 수행
         // const imageUrl = result.Location;
-
-        // ... (이미지 표시 또는 다른 작업)
       } catch (err) {
         console.error("Error uploading updated photo:", err);
       }
@@ -345,8 +342,6 @@ searchInput.addEventListener("input", function () {
 // {profileImage: {}, name: "정진주", email: "wjdwlswn23@naver.com", phone: "01012345678", category: "매니저"}
 
 // {profileImage: {}, name: "김철수", email: "rlacjftn@naver.com", phone: "01012345999", category: "신입"}
-
-// {profileImage: {}, name: "박미미", email: "mimi@gmail.com", phone: "0104272222", category: "사장님"}
 
 function displayEmployees() {
   // loadFromLocalStorage 에서 Employees 데이터 가져오기
