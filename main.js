@@ -1,5 +1,4 @@
-import { AccessKeyId } from "./aws_functions.js";
-import { SecretAccessKey } from "./aws_functions.js";
+import { AccessKeyId, SecretAccessKey } from "./aws_functions.js";
 
 const list = document.getElementById("list");
 const btn1 = document.getElementById("nav-btn1");
@@ -147,17 +146,6 @@ btn1.addEventListener("click", async () => {
 
     saveToLocalStorage();
 
-    // 로딩 함수
-    function showLoading() {
-      const loadingDiv = document.getElementById("loading");
-      loadingDiv.style.display = "flex"; // 로딩 GIF를 보이게 설정
-    }
-
-    function hideLoading() {
-      const loadingDiv = document.getElementById("loading");
-      loadingDiv.style.display = "none"; // 로딩 GIF를 숨기게 설정
-    }
-
     profileImageElement.addEventListener("click", () => {
       showLoading();
 
@@ -237,6 +225,17 @@ btn2.addEventListener("click", () => {
   saveToLocalStorage();
 });
 
+// 로딩 함수
+function showLoading() {
+  const loadingDiv = document.getElementById("loading");
+  loadingDiv.style.display = "flex"; // 로딩 GIF를 보이게 설정
+}
+
+function hideLoading() {
+  const loadingDiv = document.getElementById("loading");
+  loadingDiv.style.display = "none"; // 로딩 GIF를 숨기게 설정
+}
+
 // putFile 함수를 정의하고 업로드할 이미지 파일을 매개변수 file로 받는다.
 const putFile = (file) => {
   const albumBucketName = "js-employee-bucket"; // S3의 버킷 이름
@@ -310,18 +309,18 @@ const deleteImageFromS3 = async (imageName) => {
 
 // 검색 기능
 searchInput.addEventListener("input", function () {
-  var searchValue = this.value.toLowerCase(); // 검색어를 소문자로 변환합니다.
+  let searchValue = this.value.toLowerCase(); // 검색어를 소문자로 변환합니다.
 
   // staff-list div 내의 모든 employee div를 선택합니다.
-  var employees = document.querySelectorAll("#list .employee");
+  let employees = document.querySelectorAll("#list .employee");
 
   // 각 employee div를 반복하여 검색어와 일치하는지 확인하고, 보이거나 숨깁니다.
   employees.forEach(function (employee) {
-    var nameElement = employee.querySelector(".p-name"); // 이름 요소 선택
-    var name;
+    let nameElement = employee.querySelector(".p-name"); // 이름 요소 선택
+    let name;
 
     // p-name 클래스 요소 중에서 input 요소가 아닌 div 요소를 찾아 이름을 추출합니다.
-    var nameDiv = nameElement.querySelector("div.p-name");
+    let nameDiv = nameElement.querySelector("div.p-name");
     if (nameDiv) {
       name = nameDiv.textContent.toLowerCase();
       console.log(name);
