@@ -149,6 +149,7 @@ btn1.addEventListener("click", async () => {
     profileImageElement.addEventListener("click", () => {
       showLoading();
 
+      // 전달
       // 클릭한 직원의 정보를 가져와서 상세 페이지에 전달
       const selectedEmployee = {
         profileImage: profileImageElement.src,
@@ -348,6 +349,10 @@ function displayEmployees() {
 
   for (let i = 0; i < employeeList.length; i++) {
     const employee = employeeList[i];
+    // 각 직원 데이터를 화면에 추가하는 코드 예시
+    // const employeeElement = document.createElement("div");
+    // employeeElement.textContent = employee.name; // 예시: 직원의 이름을 표시
+    // employeeContainer.appendChild(employeeElement);
   }
 }
 
@@ -355,15 +360,16 @@ displayEmployees();
 
 function saveToLocalStorage() {
   const data = JSON.stringify(employeeList);
-
-  localStorage.setItem("my_employess", data);
+  localStorage.setItem("my_employees", data);
 }
 
 function loadFromLocalStorage() {
   const data = localStorage.getItem("my_employees");
 
   if (data) {
-    JSON.parse(data);
+    employeeList.length = 0; // 기존 데이터 초기화
+    const parsedData = JSON.parse(data);
+    employeeList.push(...parsedData); // 파싱한 데이터를 배열에 추가
   }
 }
 
